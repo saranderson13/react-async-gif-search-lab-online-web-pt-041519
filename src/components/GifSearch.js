@@ -6,17 +6,22 @@ export default class GifSearch extends Component {
         inputValue: ""
     }
 
-    handleInput = (e) => {
-        this.setState({
-            inputValue: e.target.value
-        })
+    // handleInput = (e) => {
+    //     this.setState({
+    //         inputValue: e.target.value
+    //     })
+    // }
+
+    handleSubmit = e => {
+        e.preventDefault()
+        this.props.submit(this.state.inputValue)
     }
 
     render() {
         // console.log(this.state.inputValue)
         return (
-            <form onSubmit={ e => this.props.submit(e) }>
-                <input type="text" name="inputValue" value={this.state.inputValue} onChange={ e => this.handleInput(e) }></input>
+            <form onSubmit={ this.handleSubmit }>
+                <input type="text" name="inputValue" value={this.state.inputValue} onChange={ e => this.setState({ inputValue: e.target.value }) }></input>
                 <input type="submit" />
             </form>
         )

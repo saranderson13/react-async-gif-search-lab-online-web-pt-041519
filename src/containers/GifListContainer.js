@@ -9,9 +9,7 @@ class GifListContainer extends Component {
         query: ""
     }
 
-    submitHandler = (e) => {
-        e.preventDefault()
-        let query = e.target.firstChild.value
+    submitHandler = (query) => {
         fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=tOyYDK5hDiJvVwv2ROG8QuEF65B4wz6X&rating=g&limit=3`)
             .then(resp => resp.json())
             .then(data => {
